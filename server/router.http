@@ -1,0 +1,15 @@
+### Get all products
+GET http://localhost:5000/api/products
+Content-Type: application/json
+
+###
+
+### Search for "almond"
+GET http://localhost:5000/api/products?q=almond
+Content-Type: application/json
+
+###
+
+### Get a specific product by ID (e.g., 3)
+GET http://localhost:5000/api/products/3
+Content-Type: application/json

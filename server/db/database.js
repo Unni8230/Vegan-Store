@@ -1,10 +1,16 @@
-const sqlite3 = require('sqlite3').verbose();
+// db/database.js
+const sqlite3 = require('sqlite3');
+const { open } = require('sqlite');
 const path = require('path');
 
-const dbPath = path.resolve(__dirname, '../../shop.db'); 
-const db = new sqlite3.Database(dbPath, (err) => {
-  if (err) console.error('Failed to connect to DB:', err);
-  else console.log('Connected to SQLite DB 🟢');
-});
+async function initDB() {
+  const db = await open({
+    filename: path.resolve(__dirname, '../../shop.db'), // adjust path if needed
+    driver: sqlite3.Database
+  });
 
-module.exports = db;
+  console.log('✅ Connected to SQLite (async)');
+  return db;
+}
+
+module.exports = initDB;
