@@ -1,0 +1,21 @@
+# Don't format dependency folders
+node_modules
+build
+dist
+coverage
+
+# Ignore lock files and environment settings
+package-lock.json
+yarn.lock
+.env
+
+# Static assets
+public
+*.png
+*.jpg
+*.svg
+*.ico
+
+# Optional: log files or custom folders
+*.log
+logs

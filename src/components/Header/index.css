@@ -1,0 +1,35 @@
+.header-bg-container {
+  display: flex;
+  padding: 8px 20px 5px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-logo {
+  width: 60px;
+  height: 60px;
+}
+.header-menu-section {
+  width: 25%;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.link {
+  text-decoration: none;
+  align-self: center;
+}
+.header-button {
+  padding: 10px;
+  background-color: cornflowerblue;
+  align-self: center;
+  color: #ffffff;
+  border-width: 0px;
+  border-radius: 8px;
+}
+@media (max-width: 767px){
+    .header-menu-section{
+        width: 70%;
+        align-items: center;
+    }
+}

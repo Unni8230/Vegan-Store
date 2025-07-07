@@ -1,0 +1,140 @@
+.home-bg-container {
+  height: 100vh;
+  margin: 0px;
+}
+.banner-section {
+  background-image: url("https://i.imgur.com/5xAkZg9.jpg");
+  animation: zoomIn 5s ease-in-out infinite alternate;
+  width: 100%;
+  height: 70vh;
+  opacity: 0.5;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+.vegan-store-title {
+  font-family: "Quicksand", sans-serif;
+  font-size: 42px;
+  text-shadow: 2px 2px #fffae4;
+  color: black;
+  font-weight: 900;
+  text-align: center;
+  margin: 0px;
+}
+.vegan-store-moto {
+  font-family: "Poppins", sans-serif;
+  font-size: 26px;
+  margin-top: 12px;
+  margin-bottom: 0px;
+}
+.vegan-store-moto-description {
+  width: 100%;
+  max-width: 60%;
+  color: #A9A9A9;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+@media (max-width: 750px){
+    .vegan-store-title{
+        font-size: 37px;
+    }
+    .vegan-store-moto{
+        font-size: 24px;
+    }
+    .vegan-store-moto-description {
+        font-size: 13px;
+    }
+    .banner-section{
+        height: 50vh;
+    }
+}
+
+
+#section-1 {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: DodgerBlue;
+}
+
+.flex>div {
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+}
+.flex-item{
+    height: 55vh;
+    width: 25%;
+    padding: 50px 45px;
+}
+
+.flex-item i {
+    font-size: 80px;
+    transition: all 0.3s;
+}
+
+.flex-item:hover i {
+    transform: scale(1.1, 1.1);
+}
+
+.flex-item h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.flex-item p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+}
+
+#flex-1 {
+    background-color: #5acda6;
+}
+
+#flex-2 {
+    background-color: #91ac41;
+}
+
+#flex-3 {
+    background-color: #e4b476;
+}
+
+#flex-4 {
+    background-color: #f69dad;
+}
+
+@media (max-width: 800px) and (min-width: 545px) {
+    .flex {
+        width: 100%;
+    }
+    .flex-item{
+        width: 50%;
+    }
+}
+@media (max-width: 544px){
+    .flex-item{
+        width: 100%;
+        height: 45vh;
+        padding: 42px 40px;
+    }
+}
