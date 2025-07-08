@@ -1,0 +1,45 @@
+.site-footer {
+  background-color: #f5ffef;
+  color: #2e7d32;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-top {
+  margin-bottom: 1rem;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  color: #558b2f;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #33691e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  font-size: 0.85rem;
+  color: #4e944f;
+  margin-top: 1rem;
+}

@@ -1,8 +1,15 @@
 import { Component } from "react";
+import React from "react";
+import Slider from "react-slick";
 import Header from "../Header";
+import Footer from "../Footer";
 import "./index.css";
 
 class Home extends Component {
+  state={
+    productsList: []
+  }
+
   componentDidMount() {
     this.fetchProductDetails();
   }
@@ -11,10 +18,46 @@ class Home extends Component {
     const productUrl = "http://localhost:5000/api/products";
     const productResponse = await fetch(productUrl);
     const productData = await productResponse.json();
-    console.log(productData);
+    if (productResponse.ok === true){
+      this.setState({
+        productsList: productData
+      })
+    }
   };
 
   render() {
+    const {productsList} = this.state
+    var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    initialSlide: 0,
+    cssEase: 'ease-in-out',
+    responsive: [
+      {
+        breakpoint: 824,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      }
+    ]
+  };
     return (
       <>
         <Header />
@@ -38,7 +81,7 @@ class Home extends Component {
                 </p>
               </div>
               <div id="flex-2" className="flex-item">
-                <i class="fa-solid fa-seedling"></i>
+                <i className="fa-solid fa-seedling"></i>
                 <h3>Local</h3>
                 <p>
                   Fresh tomatoes are ideal for replenishing the loss of
@@ -47,7 +90,7 @@ class Home extends Component {
                 </p>
               </div>
               <div id="flex-3" className="flex-item">
-                <i class="fa-solid fa-lemon"></i>
+                <i className="fa-solid fa-lemon"></i>
                 <h3>Fresh</h3>
                 <p>
                   In the content of vitamin C, sweet peppers are superior to
@@ -55,7 +98,7 @@ class Home extends Component {
                 </p>
               </div>
               <div id="flex-4" className="flex-item">
-                <i class="fa-solid fa-heart"></i>
+                <i className="fa-solid fa-heart"></i>
                 <h3>Healthy</h3>
                 <p>
                   If you sometimes eat hot chili peppers, this will help
@@ -65,7 +108,26 @@ class Home extends Component {
               </div>
             </div>
           </div>
+          <div className="slider-container">
+            <div className="explore-more-container">
+              <p className="some-vegan-products-text">Handpicked Freshness</p>
+              <button type="button" className="ripple-btn">Explore More</button>
+            </div>
+            <Slider {...settings}>
+              {productsList.map(eachProduct => (
+                <div className="product-slide" key={eachProduct.id}>
+                <img src={eachProduct.image_url} alt={eachProduct.title} className="product-image" />
+                <h3 className="product-title">{eachProduct.title}</h3>
+                <p className="product-desc"><span className="price-label">Price: ₹{eachProduct.price}</span></p>
+                <p className="product-desc">{eachProduct.description}</p>
+              </div>
+
+              ))}
+            </Slider>
+          </div>
+          <Footer />
         </div>
+        
       </>
     );
   }
