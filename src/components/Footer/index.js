@@ -19,6 +19,9 @@ const Footer = () => {
           Built with 💚 by Unni • <a href="https://github.com/Unni8230">GitHub</a>
         </p>
         <p>© {new Date().getFullYear()} Vegan Store. All rights reserved.</p>
+        <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            ⬆️ Back to Top
+        </button>
       </div>
     </footer>
   );

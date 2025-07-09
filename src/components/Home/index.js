@@ -1,5 +1,5 @@
 import { Component } from "react";
-import React from "react";
+import {Link} from 'react-router-dom'
 import Slider from "react-slick";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -111,7 +111,9 @@ class Home extends Component {
           <div className="slider-container">
             <div className="explore-more-container">
               <p className="some-vegan-products-text">Handpicked Freshness</p>
-              <button type="button" className="ripple-btn">Explore More</button>
+              <Link to='/all-products'>
+                <button type="button" className="ripple-btn">Explore More</button>
+              </Link>
             </div>
             <Slider {...settings}>
               {productsList.map(eachProduct => (

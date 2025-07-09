@@ -40,6 +40,29 @@
 
 .footer-bottom {
   font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #4e944f;
   margin-top: 1rem;
+}
+.back-to-top {
+  align-self: flex-end;
+  bottom: 30px;
+  right: 30px;
+  background-color: #81c784;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+  background-color: #66bb6a;
 }
