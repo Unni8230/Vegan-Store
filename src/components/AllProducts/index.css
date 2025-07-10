@@ -1,26 +1,43 @@
 .banners-section {
-  background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752043297/all_products_ywh5rh.jpg");
+  background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752139030/Allproducts_klysgk.jpg");
   animation: zoomIn 5s ease-in-out infinite alternate;
   width: 100%;
   height: 70vh;
-  opacity: 0.5;
+  opacity: 0.8;
   background-size: cover;
   border: 2px solid grey;
   margin-bottom: 3px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  padding: 30px;
+}
+.vegan-store-all-products-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  text-shadow: 2px 2px #fffae4;
+  color: black;
+  margin: 0px;
+}
+.vegan-store-all-products-description {
+  width: 100%;
+  max-width: 60%;
+  color: #006400;
+  margin-top: 10px;
+  font-size: 20px;
+  max-width: 30vw;
+  letter-spacing: 0.5px;
+  font-weight: 500;
 }
 .all-products-display-section{
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 35px;
     height: 120vh;
     overflow: auto;
-    scroll-behavior: smooth; /* Helps with scroll feel */
+    scroll-behavior: auto; /* Helps with scroll feel */
     -webkit-overflow-scrolling: touch; /* For mobile smoothness */
     will-change: transform; /* Hinting GPU optimization */
 
@@ -37,12 +54,11 @@
     padding: 12px;
     margin: 18px;
     padding-top:25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease-out, box-shadow 0.3s ease;
 }
 
 .each-product:hover{
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(76, 175, 80, 0.3);
 }
 .product-item-image{
   width: 7rem;
@@ -67,7 +83,16 @@
         margin: 7px;
         height: 53vh;
         padding: 10px;
-    }  
+    } 
+    .banners-section{
+        padding: 24px;
+        background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752139030/Allproducts_klysgk.jpg");
+        height: 55vh;
+    } 
+    .vegan-store-all-products-description {
+        max-width: 60vw;
+        font-size: 17px;
+    }
     
 }
 .product-item-title{
@@ -125,5 +150,110 @@
     .product-item-title{
         font-size: 1rem;
         margin-top: 0px;
+    }
+}
+.categories-section{
+    width: 100%;
+    padding: 3rem;
+    padding-bottom: 1rem;
+}
+.featured-heading{
+    font-size: 32px;
+    color:#1b5e20;
+    font-weight: 600;
+}
+.top-picks-heading{
+    font-size: 32px;
+    color:#1b5e20;
+    font-weight: 600;
+    margin-left: 3rem;
+    margin-top: 0px;
+}
+.featured-categories-section{
+    list-style-type: none;
+     display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #d3f7c8 transparent;
+
+
+}
+.featured-categories-section::-webkit-scrollbar {
+  height: 6px;
+}
+
+.featured-categories-section::-webkit-scrollbar-thumb {
+  background-color: #d3f7c8;
+  border-radius: 6px;
+}
+
+.each-category{
+    width:6rem;
+    flex-shrink: 0;
+    padding: 10px;
+    border: 1px solid #DCDCDC;
+    text-align: center;
+    margin-right: 20px;
+}
+.category-thumbnail{
+    width: 32px;
+    height: 32px; 
+    margin-bottom: 8px;  
+}
+.category-name{
+    font-size: 12px;
+    margin-bottom: 0px;
+    font-family: 'EB Garamond';
+}
+.heading-search-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-section{
+    border-width: 0px;
+    padding: 6px;
+}
+.search-icon-section{
+    display: flex;
+    border: 1px solid #32CD32;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 8px;
+}
+.search-icon-btn{
+    border-width: 0px;
+    background-color: #DCDCDC;
+}
+@media (max-width: 650px){
+    .heading-search-section{
+        flex-direction: column;
+        margin-bottom: 8px;
+    }
+    .search-icon-section{
+        width: 50vw;
+    }
+    .search-section{
+        padding: 4px;
+    }
+    .top-picks-heading{
+        text-align: center;
+    }
+}
+@media (min-width: 768px){
+    .each-category{
+        width: 7rem;
+    }
+    .category-thumbnail{
+        width: 42px;
+        height: 42px;
+    }
+    .category-name{
+        font-size: 18px;
     }
 }
