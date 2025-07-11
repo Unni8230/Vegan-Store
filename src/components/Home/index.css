@@ -39,6 +39,9 @@
   margin-top: 12px;
   margin-bottom: 0px;
 }
+.product-home-link{
+  text-decoration: none;
+}
 .vegan-store-moto-description {
   width: 100%;
   max-width: 60%;

@@ -117,12 +117,14 @@ class Home extends Component {
             </div>
             <Slider {...settings}>
               {productsList.map(eachProduct => (
+                <Link to={`/product-details/${eachProduct.id}`} className="product-home-link">
                 <div className="product-slide" key={eachProduct.id}>
-                <img src={eachProduct.image_url} alt={eachProduct.title} className="product-image" />
-                <h3 className="product-title">{eachProduct.title}</h3>
-                <p className="product-desc"><span className="price-label">Price: ₹{eachProduct.price}</span></p>
-                <p className="product-desc">{eachProduct.description}</p>
-              </div>
+                  <img src={eachProduct.image_url} alt={eachProduct.title} className="product-image" />
+                  <h3 className="product-title">{eachProduct.title}</h3>
+                  <p className="product-desc"><span className="price-label">Price: ₹{eachProduct.price}</span></p>
+                  <p className="product-desc">{eachProduct.description}</p>
+                </div>
+              </Link>
 
               ))}
             </Slider>

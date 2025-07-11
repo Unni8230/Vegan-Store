@@ -35,15 +35,17 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 35px;
-    height: 120vh;
+    height: 100vh;
     overflow: auto;
-    scroll-behavior: auto; /* Helps with scroll feel */
-    -webkit-overflow-scrolling: touch; /* For mobile smoothness */
-    will-change: transform; /* Hinting GPU optimization */
+    scroll-behavior: auto; 
+    -webkit-overflow-scrolling: touch; 
+    will-change: transform; 
 
 }
 .each-product{
     width: 21%;
+    position: relative;
+    overflow: hidden;
     height: 60vh;
     display: flex;
     flex-direction: column;
@@ -56,7 +58,22 @@
     padding-top:25px;
     transition: transform 0.2s ease-out, box-shadow 0.3s ease;
 }
-
+.product-link {
+  color: inherit;
+}
+.badge-container {
+  position: absolute;
+  width: 27%;
+  top: 0;
+  right: 0;
+  background: #5cb85c;
+  color: white;
+  padding: 6px 11px;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
 .each-product:hover{
     transform: translateY(-8px) scale(1.02);
 }
@@ -67,6 +84,11 @@
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 1rem;
+}
+.wishlist-btn{
+    color: red;
+    border-width: 0px;
+    background-color: transparent;
 }
 @media (max-width: 767px) and (min-width: 576px){
     .each-product{
@@ -84,6 +106,11 @@
         height: 53vh;
         padding: 10px;
     } 
+    .badge-container{
+        font-size: 10px;
+        width: 30%;
+        padding: 4px 10px;
+    }
     .banners-section{
         padding: 24px;
         background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752139030/Allproducts_klysgk.jpg");
@@ -194,10 +221,24 @@
     width:6rem;
     flex-shrink: 0;
     padding: 10px;
+    border-radius: 8px;
     border: 1px solid #DCDCDC;
     text-align: center;
     margin-right: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
 }
+.active {
+    border: 1px solid #344e41; 
+    background-color: #e4f7df;  
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(52, 78, 65, 0.2);
+    transition: background-color 0.1s ease, border 0.1s ease;
+}
+.each-category:hover {
+  transform: scale(1.03);
+}
+
 .category-thumbnail{
     width: 32px;
     height: 32px; 
@@ -207,6 +248,13 @@
     font-size: 12px;
     margin-bottom: 0px;
     font-family: 'EB Garamond';
+}
+.button-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    height: 20%;
 }
 .heading-search-section{
     display: flex;
@@ -220,15 +268,26 @@
 }
 .search-icon-section{
     display: flex;
-    border: 1px solid #32CD32;
+    border: 1px solid #696969;
     border-radius: 8px;
     align-items: center;
     justify-content: space-between;
     padding-right: 8px;
 }
-.search-icon-btn{
-    border-width: 0px;
-    background-color: #DCDCDC;
+.empty-products-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+.empty-products-image{
+    width: 80%;
+}
+.empty-products-text{
+    text-align: center;
+    font-size: 22px;
+    margin: 15px;
 }
 @media (max-width: 650px){
     .heading-search-section{
@@ -236,7 +295,7 @@
         margin-bottom: 8px;
     }
     .search-icon-section{
-        width: 50vw;
+        width: 45vw;
     }
     .search-section{
         padding: 4px;
@@ -244,6 +303,9 @@
     .top-picks-heading{
         text-align: center;
     }
+    .empty-products-image{
+        width: 60%;
+}
 }
 @media (min-width: 768px){
     .each-category{

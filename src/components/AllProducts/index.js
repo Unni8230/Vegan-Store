@@ -1,7 +1,10 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import { PuffLoader } from 'react-spinners'
 import Header from '../Header';
+import Footer from '../Footer'
 import { IoSearchOutline } from "react-icons/io5";
+import { FaHeart, FaRegHeart} from "react-icons/fa";
 import './index.css'
 
 const filterMenu = [
@@ -27,11 +30,38 @@ class AllProducts extends Component{
     filteredProducts: [],
     activeCategory: 'All',
     searchInput: '',
+    wishList: [],
     status: statusMenu.initial
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.fetchProductDetails();
+    this.fetchWishlistProducts();
+  }
+
+  fetchWishlistProducts = () => {
+    const wishList = localStorage.getItem('wishlist')
+    if (wishList) {
+      this.setState({ wishList: JSON.parse(wishList) });
+    }
+
+  }
+
+  toggleItemstoWishlist = product => {
+    const { wishList } = this.state;
+    const alreadyAdded = wishList.some((item) => item.id === product.id);
+    console.log(alreadyAdded)
+    if (!alreadyAdded) {
+      const updatedWishlist = [...wishList, product];
+      this.setState({ wishList: updatedWishlist });
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    }
+    else{
+      const updatedWishlist = wishList.filter(each => each.id !== product.id)
+      this.setState({ wishList: updatedWishlist });
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    }
   }
 
   updateSearchQuery = event => {
@@ -97,7 +127,7 @@ class AllProducts extends Component{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '150px', // Adjust based on layout
+        height: '150px', 
       },
     };
 
@@ -112,22 +142,60 @@ class AllProducts extends Component{
     </div>
   )}
 
+  renderEmptyProductsView = () => (
+    <div className='empty-products-container'>
+      <img className='empty-products-image' src="https://res.cloudinary.com/dyareetre/image/upload/v1751183061/Asset_1_1_uislqa.png" alt="no products to show" />
+      <p className='empty-products-text'>Your search did not find any matches</p>
+    </div>
+  )
+
+  displayProductsListView = () => {
+    const {filteredProducts, searchInput, wishList} = this.state
+    const finalProducts = filteredProducts.filter(each => each.title.toLowerCase().includes(searchInput.toLowerCase()) || each.category.toLowerCase().includes(searchInput.toLowerCase()))
+    return(
+      finalProducts.map(eachItem => (
+              <li className='each-product' key={eachItem.id}>
+                {eachItem.organic === 1 && (
+                      <div className="badge-container">Organic</div>
+                    )}
+                    <img src={eachItem.image_url} className='product-item-image' alt={eachItem.title} />
+                    <h3 className='product-item-title'>{eachItem.title}</h3>
+                    <p className='product-category'>{eachItem.category}</p>
+                    <p className='product-description'>{eachItem.description}</p>
+                    <p className='product-price'><span className='price-text'>Price: </span>{eachItem.price}</p>
+                  <div className='button-container'>
+                    <button className='wishlist-btn' data-toggle="tooltip" data-placement="right" title="Add to Wishlist" onClick={() => {this.toggleItemstoWishlist(eachItem)}}>
+                    {wishList.some(item => item.id === eachItem.id)
+                      ? <FaHeart />
+                      : <FaRegHeart />}
+                    </button>
+                    <Link to={`/product-details/${eachItem.id}`} className="product-link">
+                       <button type="button" className='btn btn-outline-primary btn-sm'>Know more</button>
+                    </Link>
+                  </div>
+              </li>
+            
+        ))
+    )
+  }
+
   SuccessView  =() => {
-    const {filteredProducts, searchInput} = this.state
-    const finalProducts = filteredProducts.filter(each => each.title.toLowerCase().includes(searchInput.toLowerCase()))
+    const {filteredProducts, searchInput, activeCategory} = this.state
+    const finalProducts = filteredProducts.filter(each => each.title.toLowerCase().includes(searchInput.toLowerCase()) || each.category.toLowerCase().includes(searchInput.toLowerCase()))
+    const isFinalProductsEmpty = finalProducts.length === 0
     return(
       <>
       <div className='categories-section'>
         <div className='heading-search-section'>
           <p className='featured-heading'>Featured Categories</p>
           <div className='search-icon-section'>
-          <input className='search-section' type='search' onChange={this.updateSearchQuery} />
-          <IoSearchOutline />
+            <input className='search-section' placeholder='Search here...' type='search' onChange={this.updateSearchQuery} />
+            <IoSearchOutline />
           </div>
         </div>
         <ul className='featured-categories-section'>
           {filterMenu.map(eachCategory => (
-            <li key={eachCategory.id} className='each-category' onClick={()=> {this.changeActiveCetegory(eachCategory.id)}}>
+            <li key={eachCategory.id} className={`each-category ${eachCategory.id === activeCategory ? 'active' : ''}`} onClick={()=> {this.changeActiveCetegory(eachCategory.id)}}>
               <img className='category-thumbnail' src={eachCategory.Thumbnail} alt={`${eachCategory.id} logo`}/>
               <p className='category-name'>{eachCategory.displayText}</p>
             </li>
@@ -136,17 +204,9 @@ class AllProducts extends Component{
       </div>
       <p className='top-picks-heading'>Our Top Picks</p>
       <ul className='all-products-display-section'>
-        {finalProducts.map(eachItem => (
-            <li className='each-product' key={eachItem.id}>
-                <img src={eachItem.image_url} className='product-item-image' alt={eachItem.title} />
-                <h3 className='product-item-title'>{eachItem.title}</h3>
-                <p className='product-category'>{eachItem.category}</p>
-                <p className='product-description'>{eachItem.description}</p>
-                <p className='product-price'><span className='price-text'>Price: </span>{eachItem.price}</p>
-                <button type="button" className='btn btn-info know-more-button'>Know more</button>
-            </li>
-        ))}
+        {isFinalProductsEmpty ? this.renderEmptyProductsView(): this.displayProductsListView()}
       </ul>
+      <Footer />
       </>
     )
   }

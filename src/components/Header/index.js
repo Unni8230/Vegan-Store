@@ -15,7 +15,6 @@ class Header extends Component {
 
   render() {
     const {menuOpen} = this.state
-    console.log(menuOpen)
     return (
       <div className="header-bg-container">
         <img
