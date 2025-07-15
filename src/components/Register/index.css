@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+.register-bg-container {
+  background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752549464/71a9a2cc-b074-4378-a729-e1298dadd4da_itwn72.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body,
+html {
+  height: 100%;
+  background-color: #f2fff2;
+}
+
+.register-container {
+  display: flex;
+  height: 85vh;
+  width: 80vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 14px;
+}
+
+.register-right-image {
+  width: 45%;
+  background: url('https://res.cloudinary.com/dyareetre/image/upload/v1752548722/generate_the_same_im_u1tfme.png') center/cover no-repeat;
+  background-size: cover;
+  padding: 10px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+ 
+.left-section {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  background-color: #ffffff;
+  flex-direction: column;
+  justify-content: center;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+h2 {
+  font-size: 28px;
+  color: #333;
+}
+
+h2 span {
+  color: #34a853;
+}
+
+.instructions {
+  color: #666;
+  margin-top: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input{
+  padding: 10px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #34a853;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2a8e3e;
+}
+
+.error-msg {
+  color: #d93025;
+  text-decoration: none;
+  font-size: 14px;
+}
+.signup-prompt a {
+  color: #34a853;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-prompt a:hover {
+  text-decoration: underline;
+  color:blueviolet
+}
+.register-top-sm-image{
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    display: none;
+}
+
+@media (max-width: 656px){
+  .register-container{
+    flex-direction: column;
+    height: 90vh;
+  }
+  .register-right-image{
+    display: none;
+    
+  }
+  .register-top-sm-image{
+    display: block;
+    height: 25vh;
+    width: 100%;
+    background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752554248/generate_the_same_im1_a23jov.png");
+  }
+  .left-section{
+    height: 75vh;
+    border-radius: 14px;
+    padding-top: 50px;
+  }
+}

@@ -56,7 +56,7 @@
     padding: 12px;
     margin: 18px;
     padding-top:25px;
-    transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease;
 }
 .product-link {
   color: inherit;
@@ -75,7 +75,7 @@
   border-top-right-radius: 8px;
 }
 .each-product:hover{
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-8px) scale(1.04);
 }
 .product-item-image{
   width: 7rem;

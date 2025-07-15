@@ -286,7 +286,7 @@ class ProductDetails extends Component {
   clickAddCartBtn = () => {
     const jwtToken = Cookies.get("jwt_token");
     if (jwtToken === undefined) {
-      this.props.navigate("/");
+      this.props.navigate("/login");
     }
   };
 
