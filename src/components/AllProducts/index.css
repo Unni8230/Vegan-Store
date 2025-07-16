@@ -13,7 +13,7 @@
   padding: 30px;
 }
 .vegan-store-all-products-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 42px;
   text-shadow: 2px 2px #fffae4;
   color: black;
@@ -29,34 +29,37 @@
   letter-spacing: 0.5px;
   font-weight: 500;
 }
-.all-products-display-section{
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 35px;
-    height: 100vh;
-    overflow: auto;
-    scroll-behavior: auto; 
-    -webkit-overflow-scrolling: touch; 
-    will-change: transform; 
-
+.all-products-display-section {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 35px;
+  height: 100vh;
+  overflow: auto;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  will-change: transform;
 }
-.each-product{
-    width: 21%;
-    position: relative;
-    overflow: hidden;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
-    padding: 12px;
-    margin: 18px;
-    padding-top:25px;
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+.each-product {
+  width: 21%;
+  position: relative;
+  overflow: hidden;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.1),
+    0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  margin: 18px;
+  padding-top: 25px;
+  transition:
+    transform 0.3s ease-out,
+    box-shadow 0.3s ease;
 }
 .product-link {
   color: inherit;
@@ -74,10 +77,11 @@
   border-bottom-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-.each-product:hover{
-    transform: translateY(-8px) scale(1.04);
+.each-product:hover {
+  transform: translateY(-8px) scale(1.04);
+  background-color: transparent !important;
 }
-.product-item-image{
+.product-item-image {
   width: 7rem;
   align-self: center;
   height: 7rem;
@@ -85,44 +89,69 @@
   border-radius: 50%;
   margin-bottom: 1rem;
 }
-.wishlist-btn{
-    color: red;
-    border-width: 0px;
-    background-color: transparent;
+.wishlist-btn {
+  color: red;
+  border-width: 0px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: transform 0.2s ease-in-out;
 }
-@media (max-width: 767px) and (min-width: 576px){
-    .each-product{
-        width: 45%;
-        margin: 10px;
-    }
+.wishlist-btn:hover {
+  transform: scale(1.05);
+  background-color: #FAEBD7 ;
 }
-@media (max-width: 575px){
-    .all-products-display-section{
-        padding: 20px;
-    }
-    .each-product{
-        width: 46%;
-        margin: 7px;
-        height: 53vh;
-        padding: 10px;
-    } 
-    .badge-container{
-        font-size: 10px;
-        width: 30%;
-        padding: 4px 10px;
-    }
-    .banners-section{
-        padding: 24px;
-        background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752139030/Allproducts_klysgk.jpg");
-        height: 55vh;
-    } 
-    .vegan-store-all-products-description {
-        max-width: 60vw;
-        font-size: 17px;
-    }
-    
+
+@media (max-width: 767px) and (min-width: 576px) {
+  .each-product {
+    width: 45%;
+    margin: 10px;
+  }
 }
-.product-item-title{
+@media (max-width: 530px){
+  .each-product {
+    width: 45%;
+    margin: 7px;
+    height: 38vh;
+    padding: 10px;
+  }
+  .all-products-display-section {
+    padding: 15px;
+  }
+  .badge-container {
+    font-size: 9px;
+    width: 30%;
+    padding: 4px 4px;
+    text-align: center;
+  }
+}
+@media (max-width: 575px) and (min-width: 531px) {
+  .all-products-display-section {
+    padding: 20px;
+  }
+  .each-product {
+    width: 46%;
+    margin: 7px;
+    height: 53vh;
+    padding: 10px;
+  }
+  .badge-container {
+    font-size: 10px;
+    width: 30%;
+    padding: 4px 10px;
+  }
+  .banners-section {
+    padding: 24px;
+    background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752139030/Allproducts_klysgk.jpg");
+    height: 55vh;
+  }
+  .vegan-store-all-products-description {
+    max-width: 60vw;
+    font-size: 17px;
+  }
+}
+.product-item-title {
   font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
@@ -130,83 +159,83 @@
   color: #2e7d32;
   margin-bottom: 0px;
   margin-top: 0px;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
-.product-category{
-    color: #e4b476;
-    text-align: center;
-    font-weight: 600;
-    margin: 7px;
+.product-category {
+  color: #e4b476;
+  text-align: center;
+  font-weight: 600;
+  margin: 7px;
 }
-.product-description{
-    font-size: 0.95rem;
-    color: #555;
-    text-align: center;
-    margin: 0px;
-    height: 3rem;
+.product-description {
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+  margin: 0px;
+  height: 3rem;
 }
-.product-price{
-    font-size: 0.90rem;
-    margin-top: 7px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-right: 6px;
-    color: #1b5e20;
-    font-size: 0.85rem;
-    background-color: #e8f5e9;
-    padding: 2px 6px;
-    border-radius: 4px;
+.product-price {
+  font-size: 0.9rem;
+  margin-top: 7px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 6px;
+  color: #1b5e20;
+  font-size: 0.85rem;
+  background-color: #e8f5e9;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
-.know-more-button{
-    align-self: center;
+.know-more-button {
+  align-self: center;
 }
-.each-product:hover .product-item-title{
-     transform: translateY(-5px) scale(1.04);
+.each-product:hover .product-item-title {
+  transform: translateY(-5px) scale(1.04);
 }
-.each-product:hover .product-item-image{
-    transform: scale(1.05);
+.each-product:hover .product-item-image {
+  transform: scale(1.05);
 }
-@media (max-width: 575px){
-    .product-category{
-        margin: 6px;
-    }
-    .product-description{
-        font-size: 0.86rem;
-        height: 2rem;
-    }
-    .product-item-title{
-        font-size: 1rem;
-        margin-top: 0px;
-    }
-}
-.categories-section{
-    width: 100%;
-    padding: 3rem;
-    padding-bottom: 1rem;
-}
-.featured-heading{
-    font-size: 32px;
-    color:#1b5e20;
-    font-weight: 600;
-}
-.top-picks-heading{
-    font-size: 32px;
-    color:#1b5e20;
-    font-weight: 600;
-    margin-left: 3rem;
+@media (max-width: 575px) {
+  .product-category {
+    margin: 6px;
+  }
+  .product-description {
+    font-size: 0.86rem;
+    height: 2rem;
+  }
+  .product-item-title {
+    font-size: 1rem;
     margin-top: 0px;
+  }
 }
-.featured-categories-section{
-    list-style-type: none;
-     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 10px;
-    gap: 12px;
-    scrollbar-width: thin;
-    scrollbar-color: #d3f7c8 transparent;
-
-
+.categories-section {
+  width: 100%;
+  padding: 3rem;
+  padding-bottom: 1rem;
+}
+.featured-heading {
+  font-size: 32px;
+  color: #1b5e20;
+  font-weight: 600;
+}
+.top-picks-heading {
+  font-size: 32px;
+  color: #1b5e20;
+  font-weight: 600;
+  margin-left: 3rem;
+  margin-top: 0px;
+}
+.featured-categories-section {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #d3f7c8 transparent;
 }
 .featured-categories-section::-webkit-scrollbar {
   height: 6px;
@@ -217,105 +246,115 @@
   border-radius: 6px;
 }
 
-.each-category{
-    width:6rem;
-    flex-shrink: 0;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #DCDCDC;
-    text-align: center;
-    margin-right: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-
+.each-category {
+  width: 6rem;
+  flex-shrink: 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  text-align: center;
+  margin-right: 20px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 .active {
-    border: 1px solid #344e41; 
-    background-color: #e4f7df;  
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(52, 78, 65, 0.2);
-    transition: background-color 0.1s ease, border 0.1s ease;
+  border: 1px solid #344e41;
+  background-color: #e4f7df;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(52, 78, 65, 0.2);
+  transition:
+    background-color 0.1s ease,
+    border 0.1s ease;
 }
 .each-category:hover {
   transform: scale(1.03);
+  background-color: transparent !important;
 }
 
-.category-thumbnail{
-    width: 32px;
-    height: 32px; 
-    margin-bottom: 8px;  
+.category-thumbnail {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
 }
-.category-name{
-    font-size: 12px;
-    margin-bottom: 0px;
-    font-family: 'EB Garamond';
+.category-name {
+  font-size: 12px;
+  margin-bottom: 0px;
+  font-family: "EB Garamond";
 }
-.button-container{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-    height: 20%;
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  height: 20%;
 }
-.heading-search-section{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+.heading-search-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
-.search-section{
-    border-width: 0px;
-    padding: 6px;
+.search-section {
+  border-width: 0px;
+  padding: 8px;
+  
+  background-color: transparent;
+  width: auto;
+  max-width: 400px;
+  margin: 0 auto;
 }
-.search-icon-section{
-    display: flex;
-    border: 1px solid #696969;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 8px;
+.search-icon-section {
+  display: flex;
+  border: 1px solid #696969;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 8px;
 }
-.empty-products-container{
-    display: flex;
+.empty-products-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+.empty-products-image {
+  width: 80%;
+}
+.empty-products-text {
+  text-align: center;
+  font-size: 22px;
+  margin: 15px;
+}
+@media (max-width: 650px) {
+  .heading-search-section {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-}
-.empty-products-image{
-    width: 80%;
-}
-.empty-products-text{
+    margin-bottom: 8px;
+  }
+  .search-icon-section {
+    width: 45vw;
+  }
+  .search-section {
+    padding: 4px;
+  }
+  .top-picks-heading {
     text-align: center;
-    font-size: 22px;
-    margin: 15px;
+  }
+  .empty-products-image {
+    width: 60%;
+  }
 }
-@media (max-width: 650px){
-    .heading-search-section{
-        flex-direction: column;
-        margin-bottom: 8px;
-    }
-    .search-icon-section{
-        width: 45vw;
-    }
-    .search-section{
-        padding: 4px;
-    }
-    .top-picks-heading{
-        text-align: center;
-    }
-    .empty-products-image{
-        width: 60%;
-}
-}
-@media (min-width: 768px){
-    .each-category{
-        width: 7rem;
-    }
-    .category-thumbnail{
-        width: 42px;
-        height: 42px;
-    }
-    .category-name{
-        font-size: 18px;
-    }
+@media (min-width: 768px) {
+  .each-category {
+    width: 7rem;
+  }
+  .category-thumbnail {
+    width: 42px;
+    height: 42px;
+  }
+  .category-name {
+    font-size: 18px;
+  }
 }

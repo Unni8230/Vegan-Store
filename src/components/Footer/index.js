@@ -1,4 +1,4 @@
-import './index.css';
+import "./index.css";
 
 const Footer = () => {
   return (
@@ -11,16 +11,20 @@ const Footer = () => {
       <div className="footer-links">
         <a href="/">Home</a>
         <a href="/products">Products</a>
-        <a href="/about">About Us</a>
+        <a href="/about">Cart</a>
       </div>
 
       <div className="footer-bottom">
         <p>
-          Built with 💚 by Unni • <a href="https://github.com/Unni8230">GitHub</a>
+          Built with 💚 by Unni •{" "}
+          <a href="https://github.com/Unni8230">GitHub</a>
         </p>
         <p>© {new Date().getFullYear()} Vegan Store. All rights reserved.</p>
-        <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            ⬆️ Back to Top
+        <button
+          className="back-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          ⬆️ Back to Top
         </button>
       </div>
     </footer>

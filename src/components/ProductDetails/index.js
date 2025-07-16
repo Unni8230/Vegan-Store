@@ -8,6 +8,7 @@ import Footer from "../Footer";
 import "./index.css";
 import { FaRupeeSign } from "react-icons/fa";
 import { PiPottedPlant } from "react-icons/pi";
+import { toast } from "react-toastify";
 
 const withRouterParams = (Component) => {
   return function Wrapped(props) {
@@ -241,6 +242,7 @@ class ProductDetails extends Component {
     productDetails: {},
     status: statusMenu.initial,
     quantity: 1,
+    isProductAdding: false,
   };
 
   componentDidMount() {
@@ -283,15 +285,46 @@ class ProductDetails extends Component {
     }
   };
 
-  clickAddCartBtn = () => {
+  clickAddCartBtn = async (product) => {
     const jwtToken = Cookies.get("jwt_token");
+    const { quantity } = this.state;
     if (jwtToken === undefined) {
       this.props.navigate("/login");
+    } else {
+      this.setState({
+        isProductAdding: true,
+      });
+      const product_id = product.id;
+      const productData = { product_id, quantity, jwtToken };
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(productData),
+      };
+      const addToCartResponse = await fetch(
+        `http://localhost:5000/api/user/add-to-cart`,
+        options
+      );
+      if (addToCartResponse.ok === true) {
+        const addToCartData = await addToCartResponse.json();
+        setTimeout(() => {
+          this.setState({
+            isProductAdding: false,
+          });
+        }, 700);
+        addToCartData.success
+          ? toast.success(addToCartData.message)
+          : toast.error(addToCartData.error);
+      } else {
+        console.log("Server Error");
+      }
     }
   };
 
   SuccessView = () => {
-    const { productDetails, quantity } = this.state;
+    const { productDetails, quantity, isProductAdding } = this.state;
     const title = productDetails.title;
     const productDesc = productsImagesArray[title];
     const highLights = productHighlights[title];
@@ -369,9 +402,15 @@ class ProductDetails extends Component {
               <button
                 type="button"
                 className="add-to-cart-btn"
-                onClick={this.clickAddCartBtn}
+                onClick={() => {
+                  this.clickAddCartBtn(productDetails);
+                }}
               >
-                Add to Cart
+                <span
+                  className={`cart-text ${isProductAdding ? "fade-out" : "fade-in"}`}
+                >
+                  {isProductAdding ? "Adding to cart..." : "Add to cart"}
+                </span>
               </button>
             </div>
             <p className="product-details-more-description">
@@ -391,18 +430,20 @@ class ProductDetails extends Component {
               <p className="highlights-heading">Product Highlights</p>
               <ul className="highlights-ul-container">
                 {highLights.map((eachHighlight) => (
-                  <li className="highlight-list-item">✅ {eachHighlight}</li>
+                  <li key={eachHighlight} className="highlight-list-item">
+                    ✅ {eachHighlight}
+                  </li>
                 ))}
               </ul>
             </div>
           </div>
         </div>
-        <section class="section-wrapper">
-          <div class="section-heading">
+        <section className="section-wrapper">
+          <div className="section-heading">
             Packed with Purpose, Crafted for You
           </div>
-          <div class="text-block">
-            <ul class="benefits-list">
+          <div className="text-block">
+            <ul className="benefits-list">
               <li>
                 Sustainably harvested using eco-friendly farming practices
               </li>
@@ -423,8 +464,8 @@ class ProductDetails extends Component {
             />
           </div>
         </section>
-        <section class="section-wrapper">
-          <div class="section-heading">Here’s What You Can Make</div>
+        <section className="section-wrapper">
+          <div className="section-heading">Here’s What You Can Make</div>
           <div className="dishes-image-container">
             <img className="dish-image" src={Images[3]} alt="dishes-image" />
             <img className="dish-image" src={Images[4]} alt="dishes-image" />

@@ -1,9 +1,18 @@
 import { Component } from "react";
 import { motion } from "framer-motion";
+import { useParams, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import PageWrapper from "../PageWrapper/PageWrapper";
 import { Link } from "react-router-dom";
 import "./index.css";
+
+const withRouterParams = (Component) => {
+  return function Wrapped(props) {
+    const params = useParams();
+    const navigate = useNavigate();
+    return <Component {...props} params={params} navigate={navigate} />;
+  };
+};
 
 const imageVariants = {
   hidden: { x: "-100%", opacity: 0 },
@@ -52,7 +61,9 @@ class Login extends Component {
       });
     } else {
       const jwtToken = loginData.jwt_token;
-      Cookies.set('jwt_token', jwtToken, {expires: 3});
+      Cookies.set("jwt_token", jwtToken, { expires: 3 });
+      this.props.navigate(-1 || '/');
+
     }
   };
 
@@ -111,4 +122,4 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+export default withRouterParams(Login);

@@ -77,7 +77,6 @@ class AllProducts extends Component {
   toggleItemstoWishlist = (product) => {
     const { wishList } = this.state;
     const alreadyAdded = wishList.some((item) => item.id === product.id);
-    console.log(alreadyAdded);
     if (!alreadyAdded) {
       const updatedWishlist = [...wishList, product];
       this.setState({ wishList: updatedWishlist });
