@@ -24,6 +24,7 @@ router.get("/", async (request, response) => {
     response.status(200).json(products);
   } catch (error) {
     response.status(500).json({ error: error.message });
+    console.log(error)
   }
 });
 
