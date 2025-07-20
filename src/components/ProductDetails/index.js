@@ -9,6 +9,7 @@ import "./index.css";
 import { FaRupeeSign } from "react-icons/fa";
 import { PiPottedPlant } from "react-icons/pi";
 import { toast } from "react-toastify";
+import veganStoreContext from "../../Context/context";
 
 const withRouterParams = (Component) => {
   return function Wrapped(props) {
@@ -249,6 +250,8 @@ class ProductDetails extends Component {
     this.fetchProductDetails();
   }
 
+  static contextType = veganStoreContext;
+
   handleGoBack = () => {
     this.props.navigate(-1);
   };
@@ -309,6 +312,7 @@ class ProductDetails extends Component {
       );
       if (addToCartResponse.ok === true) {
         const addToCartData = await addToCartResponse.json();
+
         setTimeout(() => {
           this.setState({
             isProductAdding: false,
@@ -317,10 +321,23 @@ class ProductDetails extends Component {
         addToCartData.success
           ? toast.success(addToCartData.message)
           : toast.error(addToCartData.error);
+        await this.context.refreshCart();
       } else {
         console.log("Server Error");
       }
     }
+  };
+
+  DecreaseQuantity = () => {
+    this.setState((prev) => ({
+      quantity: prev.quantity - 1,
+    }));
+  };
+
+  IncreaseQuantity = () => {
+    this.setState((prev) => ({
+      quantity: prev.quantity + 1,
+    }));
   };
 
   SuccessView = () => {
@@ -395,9 +412,13 @@ class ProductDetails extends Component {
             </p>
             <div className="action-bar">
               <div className="quantity-selector">
-                <button type="button">−</button>
+                <button type="button" onClick={this.DecreaseQuantity}>
+                  −
+                </button>
                 <span>{quantity}</span>
-                <button type="button">+</button>
+                <button type="button" onClick={this.IncreaseQuantity}>
+                  +
+                </button>
               </div>
               <button
                 type="button"

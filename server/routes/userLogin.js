@@ -20,7 +20,7 @@ router.post("/", async (request, response) => {
         userDetails.password
       );
       if (isPasswordMatched) {
-        const payload = { username: username, user_id: userDetails.id };
+        const payload = { name: userDetails.name, user_id: userDetails.id };
         const jwtToken = jwt.sign(payload, "User_Secret_Token");
         return response
           .status(200)

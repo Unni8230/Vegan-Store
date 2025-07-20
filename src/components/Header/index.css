@@ -1,5 +1,6 @@
 .header-bg-container {
   display: flex;
+  height: 12vh;
   padding: 8px 20px 5px 20px;
   justify-content: space-between;
   align-items: center;
@@ -25,32 +26,54 @@
   align-items: center;
   justify-content: space-evenly;
 }
-.header-menu-items{
+.header-menu-items {
   margin: 0px;
   color: green;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 17px;
 }
-.activeHeader{
-  font-weight: bold;
-
+.signout-button {
+  height: 40px;
+  width: 100%;
+  background-color: transparent;
+  padding: 5px;
+  color: black;
+  border-radius: 10px;
 }
-.open{
+.signout-button:hover {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+.activeHeader {
+  font-weight: bold;
+}
+.open {
   display: flex;
 }
-.hide{
+.hide {
   display: none;
 }
 .link {
   text-decoration: none;
   align-self: center;
 }
+.cart-quantity-text {
+  background-color: #4caf50;
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 4px;
+  vertical-align: middle;
+}
 
 .header-button {
-  padding: 10px;
-  background-color: cornflowerblue;
+  padding-bottom: 16px;
+  background-color: transparent;
   align-self: center;
-  color: #ffffff;
+  font-size: 20px;
+  color: green;
   border-width: 0px;
   border-radius: 8px;
 }
@@ -61,20 +84,28 @@
   border: none;
   color: black;
 }
-.hamburger:hover{
+.header-button:hover {
+  background-color: transparent;
+}
+.hamburger:hover {
   transform: scale(1.06);
   background-color: transparent;
 }
-@media (max-width: 1024px){
-    .header-menu-md-section{
-        display:none;
-    }
-    .hamburger{
-      display: block;
-    }
-}
-@media (min-width: 1025px){
-  .header-menu-sm-section{
+@media (max-width: 1024px) {
+  .header-menu-md-section {
     display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+@media (min-width: 1025px) {
+  .header-menu-sm-section {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .header-bg-container {
+    height: 8vh;
   }
 }

@@ -254,17 +254,21 @@ class AllProducts extends Component {
           <ul className="featured-categories-section">
             {filterMenu.map((eachCategory) => (
               <li
+                className="categories-list-item"
                 key={eachCategory.id}
-                className={`each-category ${eachCategory.id === activeCategory ? "active" : ""}`}
                 onClick={() => {
                   this.changeActiveCetegory(eachCategory.id);
                 }}
               >
-                <img
-                  className="category-thumbnail"
-                  src={eachCategory.Thumbnail}
-                  alt={`${eachCategory.id} logo`}
-                />
+                <div
+                  className={`each-category ${eachCategory.id === activeCategory ? "active" : ""}`}
+                >
+                  <img
+                    className="category-thumbnail"
+                    src={eachCategory.Thumbnail}
+                    alt={`${eachCategory.id} logo`}
+                  />
+                </div>
                 <p className="category-name">{eachCategory.displayText}</p>
               </li>
             ))}

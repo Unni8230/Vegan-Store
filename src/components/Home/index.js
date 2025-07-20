@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import Header from "../Header";
 import Footer from "../Footer";
 import "./index.css";
-import veganStoreContext from '../../Context/context'
+import veganStoreContext from "../../Context/context";
 
 class Home extends Component {
   state = {
@@ -128,7 +128,7 @@ class Home extends Component {
                         type="button"
                         className="ripple-btn"
                         onClick={() => {
-                          changeActiveMenu('Explore');
+                          changeActiveMenu("Explore");
                         }}
                       >
                         Explore More

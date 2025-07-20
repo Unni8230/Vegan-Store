@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import PageWrapper from "../PageWrapper/PageWrapper";
 import { Link } from "react-router-dom";
 import "./index.css";
+import veganStoreContext from "../../Context/context";
 
 const withRouterParams = (Component) => {
   return function Wrapped(props) {
@@ -26,6 +27,8 @@ class Login extends Component {
     password: "",
     errorMsg: "",
   };
+
+  static contextType = veganStoreContext;
 
   updateUsername = (event) => {
     this.setState({
@@ -62,8 +65,8 @@ class Login extends Component {
     } else {
       const jwtToken = loginData.jwt_token;
       Cookies.set("jwt_token", jwtToken, { expires: 3 });
-      this.props.navigate(-1 || '/');
-
+      await this.context.refreshCart();
+      this.props.navigate(-1 || "/");
     }
   };
 
@@ -83,7 +86,7 @@ class Login extends Component {
             />
             <div className="right-section">
               <img
-                src="/images/VS_logo.jpg"
+                src="/images/VS_logo.png"
                 alt="Vegan store Logo"
                 className="logo"
               />

@@ -1,6 +1,9 @@
 import { Component } from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import { GiShoppingCart } from "react-icons/gi";
+import { FaRegUser, FaSignInAlt } from "react-icons/fa";
 import veganStoreContext from "../../Context/context";
 import "./index.css";
 
@@ -8,8 +11,14 @@ const headerCategories = [
   { id: "Home", displayText: "Home", redirectUrl: "/" },
   { id: "Explore", displayText: "Explore", redirectUrl: "/all-products" },
   { id: "WishList", displayText: "Wishlist", redirectUrl: "/wishlist" },
-  { id: "Cart", displayText: "Cart", redirectUrl: "/cart" },
 ];
+
+const withNavigation = (Component) => {
+  return (props) => {
+    const navigate = useNavigate();
+    return <Component {...props} navigate={navigate} />;
+  };
+};
 
 class Header extends Component {
   state = {
@@ -22,13 +31,19 @@ class Header extends Component {
     }));
   };
 
+  clickProfileIcon = () => {
+    this.props.navigate("/login");
+  };
+
   render() {
     const { menuOpen } = this.state;
     return (
       <veganStoreContext.Consumer>
         {(value) => {
-          const { activeMenu, changeActiveMenu } = value;
-          console.log(activeMenu);
+          const { activeMenu, changeActiveMenu, logOut, cartList, isLoggedIn } =
+            value;
+          const cartItems = cartList?.cart_items || [];
+          const cartLength = cartItems.length;
           return (
             <div className="header-bg-container">
               <Link
@@ -46,6 +61,7 @@ class Header extends Component {
               <ul className="header-menu-md-section">
                 {headerCategories.map((eachItem) => (
                   <Link
+                    key={eachItem.id}
                     to={eachItem.redirectUrl}
                     className="link"
                     onClick={() => {
@@ -60,7 +76,57 @@ class Header extends Component {
                     </li>
                   </Link>
                 ))}
-                <button className="header-button">Sign in</button>
+                <Link
+                  to="/cart"
+                  className="link"
+                  onClick={() => {
+                    changeActiveMenu("Cart");
+                  }}
+                >
+                  <li
+                    className={`header-menu-items ${activeMenu === "Cart" ? "activeHeader" : ""}`}
+                  >
+                    Cart
+                    {cartLength > 0 ? (
+                      <span className="cart-quantity-text">{cartLength}</span>
+                    ) : null}
+                  </li>
+                </Link>
+                {isLoggedIn ? (
+                  <Popup
+                    trigger={
+                      <button
+                        className="header-button"
+                        onClick={this.clickProfileIcon}
+                      >
+                        {isLoggedIn ? <FaRegUser /> : <FaSignInAlt />}
+                      </button>
+                    }
+                    contentStyle={{
+                      width: "100px",
+                      height: "50px",
+                      borderRadius: "12px",
+                      padding: "5px",
+                    }}
+                    position="bottom"
+                  >
+                    <button
+                      className="signout-button"
+                      onClick={() => {
+                        logOut();
+                      }}
+                    >
+                      Sign Out
+                    </button>
+                  </Popup>
+                ) : (
+                  <button
+                    className="header-button"
+                    onClick={this.clickProfileIcon}
+                  >
+                    {isLoggedIn ? <FaRegUser /> : <FaSignInAlt />}
+                  </button>
+                )}
               </ul>
 
               <div
@@ -70,6 +136,7 @@ class Header extends Component {
                   <Link
                     to={eachItem.redirectUrl}
                     className="link"
+                    key={eachItem.id}
                     onClick={() => {
                       changeActiveMenu(eachItem.id);
                     }}
@@ -82,7 +149,57 @@ class Header extends Component {
                     </li>
                   </Link>
                 ))}
-                <button className="header-button">Sign in</button>
+                <Link
+                  to="/cart"
+                  className="link"
+                  onClick={() => {
+                    changeActiveMenu("Cart");
+                  }}
+                >
+                  <li
+                    className={`header-menu-items ${activeMenu === "Cart" ? "activeHeader" : ""}`}
+                  >
+                    <GiShoppingCart />
+                    {cartLength > 0 ? (
+                      <span className="cart-quantity-text">{cartLength}</span>
+                    ) : null}
+                  </li>
+                </Link>
+                {isLoggedIn ? (
+                  <Popup
+                    trigger={
+                      <button
+                        className="header-button"
+                        onClick={this.clickProfileIcon}
+                      >
+                        {isLoggedIn ? <FaRegUser /> : <FaSignInAlt />}
+                      </button>
+                    }
+                    contentStyle={{
+                      width: "100px",
+                      height: "50px",
+                      borderRadius: "12px",
+                      padding: "5px",
+                    }}
+                    position="bottom"
+                  >
+                    <button
+                      className="signout-button"
+                      onClick={() => {
+                        logOut();
+                      }}
+                    >
+                      Sign Out
+                    </button>
+                  </Popup>
+                ) : (
+                  <button
+                    className="header-button"
+                    onClick={this.clickProfileIcon}
+                  >
+                    {isLoggedIn ? <FaRegUser /> : <FaSignInAlt />}
+                  </button>
+                )}
               </div>
               <button className="hamburger" onClick={this.setMenuOpen}>
                 ☰
@@ -94,4 +211,4 @@ class Header extends Component {
     );
   }
 }
-export default Header;
+export default withNavigation(Header);

@@ -100,7 +100,7 @@
 }
 .wishlist-btn:hover {
   transform: scale(1.05);
-  background-color: #FAEBD7 ;
+  background-color: #faebd7;
 }
 
 @media (max-width: 767px) and (min-width: 576px) {
@@ -109,12 +109,21 @@
     margin: 10px;
   }
 }
-@media (max-width: 530px){
+@media (max-width: 530px) {
   .each-product {
     width: 45%;
     margin: 7px;
     height: 38vh;
     padding: 10px;
+  }
+  .vegan-store-all-products-title {
+    font-size: 35px;
+  }
+  .banners-section {
+    padding: 24px;
+    background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752992092/Allproducts_klysgk1_mzhwc4.jpg");
+    height: 40vh;
+    opacity: 0.8;
   }
   .all-products-display-section {
     padding: 15px;
@@ -143,8 +152,9 @@
   }
   .banners-section {
     padding: 24px;
-    background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752139030/Allproducts_klysgk.jpg");
+    background-image: url("https://res.cloudinary.com/dyareetre/image/upload/v1752992092/Allproducts_klysgk1_mzhwc4.jpg");
     height: 55vh;
+    opacity: 0.8;
   }
   .vegan-store-all-products-description {
     max-width: 60vw;
@@ -245,15 +255,29 @@
   background-color: #d3f7c8;
   border-radius: 6px;
 }
+.categories-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+}
+.categories-list-item:hover {
+  background-color: transparent !important;
+}
 
 .each-category {
   width: 6rem;
+  height: 6rem;
   flex-shrink: 0;
-  padding: 10px;
-  border-radius: 8px;
+  border-radius: 50%;
   border: 1px solid #dcdcdc;
   text-align: center;
   margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -262,7 +286,7 @@
 .active {
   border: 1px solid #344e41;
   background-color: #e4f7df;
-  transform: scale(1.05);
+  transform: scale(1.03);
   box-shadow: 0 4px 8px rgba(52, 78, 65, 0.2);
   transition:
     background-color 0.1s ease,
@@ -274,13 +298,14 @@
 }
 
 .category-thumbnail {
-  width: 32px;
-  height: 32px;
-  margin-bottom: 8px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 .category-name {
   font-size: 12px;
   margin-bottom: 0px;
+  margin-top: 10px;
   font-family: "EB Garamond";
 }
 .button-container {
@@ -299,7 +324,7 @@
 .search-section {
   border-width: 0px;
   padding: 8px;
-  
+
   background-color: transparent;
   width: auto;
   max-width: 400px;
@@ -351,8 +376,9 @@
     width: 7rem;
   }
   .category-thumbnail {
-    width: 42px;
-    height: 42px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
   }
   .category-name {
     font-size: 18px;

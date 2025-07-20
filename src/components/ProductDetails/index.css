@@ -297,10 +297,16 @@ li:hover {
     margin-top: 25px;
   }
   .product-details-title {
-    font-size: 50px;
+    font-size: 32px;
+  }
+  .product-details-price{
+    font-size: 26px;
+  }
+  .top-main-image{
+    height: 35vh;
   }
   .top-sub-image {
-    height: 45vh;
+    height: 27vh;
   }
   .tag-list-item {
     width: 48%;
